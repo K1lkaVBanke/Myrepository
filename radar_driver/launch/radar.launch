@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<launch>
+
+   <arg name="model" default="$(find radar_urdf)/urdf/conti_radar.urdf"/>
+   <arg name="gui" default="true" />
+   <arg name="rvizconfig" default="$(find radar_rviz)/rviz/urdf.rviz" />
+   <arg name="frame_id_odometry" default="base_link" />
+   <arg name="frame_id_sensor" default="radar" />
+
+   <arg name="radar_position_x" default="3" />
+   <arg name="radar_position_y" default="0" />
+   <arg name="radar_position_z" default="0.38" />
+   <arg name="radar_orientation_x" default="0" />
+   <arg name="radar_orientation_y" default="0" />
+   <arg name="radar_orientation_z" default="0" />
+
+<!-- Radar communication nodes -->
+    <node name="decode_node_cluster" pkg="radar_driver" type="decode_node_cluster"/>
+
+    <node name="decode_node" pkg="radar_driver" type="decode_node"/>
+
+    <node name="socketcan_bridge_node" pkg="socketcan_bridge" type="socketcan_bridge_node" />
+
+    <node name="speed_info_node" pkg="radar_driver" type="speed_info_node" />
+
+    <node name="configuration_node" pkg="radar_driver" type="configuration_node" />
+
+<!-- Radar markers visualization -->
+
+    <node name="visualization_marker_node" pkg="radar_rviz" type="visualization_marker_node" />
+
+    <node name="visualization_marker_node_cluster" pkg="radar_rviz" type="visualization_marker_node_cluster" />
+
+<!-- Radar model -->
+
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+    <param name="use_gui" value="$(arg gui)"/>
+
+    <node pkg="tf" type="static_transform_publisher" name="radar_node" args="$(arg radar_position_x) $(arg radar_position_y) $(arg radar_position_z) $(arg radar_orientation_x) $(arg radar_orientation_y) $(arg radar_orientation_z) $(arg frame_id_odometry) $(arg frame_id_sensor) 10" /> 
+
+<!-- Radar rviz -->
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+<!-- Kalman filter -->
+
+   <!-- <node name="extendedkf" pkg="kalman_filter" type="extendedkf" />  -->
+
+</launch>

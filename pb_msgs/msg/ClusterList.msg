@@ -1,0 +1,5 @@
+Header header
+uint8 nof_targetsnear
+uint8 nof_targetsfar
+uint32 meas_counter
+uint8 interface_version

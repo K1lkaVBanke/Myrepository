@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>radar_driver</name>
+  <version>0.7.6</version>
+  <description>ROS driver for Continental Radar</description>
+
+  <maintainer email="sergiocp@ntu.edu.sg">Sergio Casas</maintainer>
+  <author email="sergiocp@ntu.edu.sg">Sergio Casas</author>
+
+  <license>Proprietary</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>can_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>socketcan_interface</depend>
+  <depend>pb_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+
+</package>
