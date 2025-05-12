@@ -1,0 +1,19 @@
+<package>
+  <name>radar_urdf</name>
+  <version>0.3.0</version>
+
+  <description>Radar URDF related files</description>
+
+  <maintainer email="sergiocp@ntu.edu.sg">Sergio</maintainer>
+  <author email="sergiocp@ntu.edu.sg">Sergio</author>
+
+  <license>Proprietary</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>xacro</run_depend>
+
+</package>
